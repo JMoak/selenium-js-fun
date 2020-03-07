@@ -1,0 +1,15 @@
+{
+  "name": "testing-selenium",
+  "version": "1.0.0",
+  "description": "Just testing selenium.",
+  "main": "index.js",
+  "scripts": {
+    "test": "test"
+  },
+  "author": "Jordan Moak",
+  "license": "ISC",
+  "dependencies": {
+    "chromedriver": "^80.0.1",
+    "selenium-webdriver": "^4.0.0-alpha.7"
+  }
+}
