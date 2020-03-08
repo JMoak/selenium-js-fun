@@ -36,7 +36,7 @@ async function basicTest(){
       await driver.getTitle().then(function(pageTitle) {
         console.log("The title is " + pageTitle);
       });
-      await driver.close();
+      //await driver.close();
   }
   catch(err){
       console.log("test failed..");
