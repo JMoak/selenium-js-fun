@@ -4,12 +4,14 @@
   "description": "Just testing selenium.",
   "main": "index.js",
   "scripts": {
-    "test": "test"
+    "test": "node_modules/.bin/mocha test/googleTest.js --timeout 1000000"
   },
   "author": "Jordan Moak",
   "license": "ISC",
   "dependencies": {
+    "chai": "^4.2.0",
     "chromedriver": "^80.0.1",
+    "mocha": "^7.1.0",
     "selenium-webdriver": "^4.0.0-alpha.7"
   }
 }

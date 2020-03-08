@@ -1,0 +1,19 @@
+{
+  "ecmaVersion": 6,
+  "libs": [
+    "browser",
+    "chai",
+    "ecmascript"
+  ],
+  "loadEagerly": [
+    "index.js"
+  ],
+  "plugins": {
+    "es_modules": {},
+    "node": {},
+    "doc_comment": {
+      "fullDocs": true,
+      "strong": true
+    }
+  }
+}
