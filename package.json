@@ -4,7 +4,8 @@
   "description": "Just testing selenium.",
   "main": "index.js",
   "scripts": {
-    "test": "node_modules/.bin/mocha test/googleTest.js --timeout 1000000"
+    "test": "node_modules/.bin/mocha test/mocha-test-example.js --timeout 1000000",
+    "async-test": "node test/async-function-example.js"
   },
   "author": "Jordan Moak",
   "license": "ISC",
