@@ -12,7 +12,10 @@ const chrome = require('chromedriver');
           passwordField : By.id('password'),
           passwordValue : 'Turing12jm!',
           signInButton : By.id('sign-in-button'),
-          portalTitle: By.id('ember41'),
+          portalTitle: By.js(function(){
+            console.log('trying');
+            return document.querySelector("#ember35 > span");
+          }),
           newAccountButton : By.css('#sq-app-container > div.testing-accounts > div > h1 > button'),
           newAccountNameField : By.name('name'),
           newAccountNameValue : 'testingtesting'
@@ -27,10 +30,15 @@ const chrome = require('chromedriver');
 
         // Enter text "cheese" and perform keyboard action "Enter"
         await driver.findElement(Elements.emailField).sendKeys(Elements.emailValue);
-        await driver.findElement(Elements.passwordField).sendKeys(Elements.passwordValue, Key.ENTER);
+        await driver.findElement(Elements.passwordField).sendKeys(Elements.passwordValue);
+        await driver.sleep(10000);
+        await driver.findElement(Elements.passwordField).sendKeys(Key.ENTER);
+        await driver.sleep(10000);
 
-        await driver.wait(until.urlIs('https://developer.squareup.com/apps'));
-        //let firstResult = await driver.wait(until.elementLocated(Elements.portalTitle), 10000);
+        await driver.wait(until.urlIs('https://developer.squareup.com/apps'))
+        .then(console.log("it found it."));
+        let firstResult = await driver.wait(until.elementLocated(Elements.portalTitle), 10000)
+        .then(console.log("and this?"));
 
       //  console.log(await firstResult.getAttribute('textContent'));
     }
