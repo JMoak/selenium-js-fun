@@ -8,18 +8,20 @@ const chrome = require('chromedriver');
       return {
           url : 'https://squareup.com/login?lang_code=en-US&return_to=%2Fsignup%2Fus%3Flang_code%3Den-US%26v%3Ddevelopers',
           emailField : By.id('email'),
-          emailValue : 'jordan.moak@angieslist.com',
+          emailValue : 'testing@angieslist.com',
           passwordField : By.id('password'),
-          passwordValue : 'Turing12jm!',
+          passwordValue : 'testtest123',
           signInButton : By.id('sign-in-button'),
-          portalTitle: By.js(function(){
-            console.log('trying');
-            return document.querySelector("#ember35 > span");
-          }),
           newAccountButton : By.css('#sq-app-container > div.testing-accounts > div > h1 > button'),
           newAccountNameField : By.name('name'),
-          newAccountNameValue : 'testingtesting'
-      }
+          newAccountNameValue : 'testingtesting',
+          newAccountCountryDropdown : By.xpath('//*[contains(@class, "country-dropdown-trigger")]'),
+          usaUSAUSAUSA : By.xpath('//*[@class="ember-basic-dropdown-content-wormhole-origin"]'),
+          authorizeCheckbox : By.xpath('//*[@class="form-checkbox__label__text"]'),
+          createNewAccountButton : By.xpath('//*[contains(@class, "button--developer create")]'),
+          launchButtons : By.xpath('//*[contains(@class, "button button--developer-secondary")]')
+
+        }
     }());
 
     try {
@@ -31,14 +33,23 @@ const chrome = require('chromedriver');
         // Enter text "cheese" and perform keyboard action "Enter"
         await driver.findElement(Elements.emailField).sendKeys(Elements.emailValue);
         await driver.findElement(Elements.passwordField).sendKeys(Elements.passwordValue);
-        await driver.sleep(10000);
+        await driver.sleep(4000);
         await driver.findElement(Elements.passwordField).sendKeys(Key.ENTER);
         await driver.sleep(10000);
 
         await driver.wait(until.urlIs('https://developer.squareup.com/apps'))
-        .then(console.log("it found it."));
-        let firstResult = await driver.wait(until.elementLocated(Elements.portalTitle), 10000)
-        .then(console.log("and this?"));
+        await driver.wait(until.elementLocated(Elements.newAccountButton), 10000).click();
+        await driver.sleep(2000);
+        await driver.wait(until.elementLocated(Elements.newAccountNameField), 10000).sendKeys(Elements.newAccountNameValue);
+        await driver.sleep(4000);
+        await driver.wait(until.elementLocated(Elements.newAccountCountryDropdown), 10000).click();
+        await driver.wait(until.elementLocated(Elements.newAccountCountryDropdown), 10000).sendKeys(Key.ENTER);
+        await driver.wait(until.elementLocated(Elements.authorizeCheckbox), 10000).click();
+        await driver.wait(until.elementLocated(Elements.createNewAccountButton), 10000).click();
+        await driver.sleep(2000);
+        launchButtonElements = await driver.findElements(Elements.launchButtons);
+        await launchButtonElements[launchButtonElements.length - 1].click();
+        await driver.sleep(5000);
 
       //  console.log(await firstResult.getAttribute('textContent'));
     }
