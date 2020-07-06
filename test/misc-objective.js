@@ -8,12 +8,12 @@ const chrome = require('chromedriver');
     let urlOfInterest = '';
     var Elements = await (function(){
       return {
-          url : 'https://squareup.com/login?lang_code=en-US&return_to=%2Fsignup%2Fus%3Flang_code%3Den-US%26v%3Ddevelopers',
-          forceRedirectUrl: 'https://squareup.com/oauth2/authorize?client_id=sq0idp-T4SClu2rWV2AcYcEiHALXg&scope=PAYMENTS_READ',
+          url : '<removed>',
+          forceRedirectUrl: '<removed too>',
           emailField : By.id('email'),
-          emailValue : 'testing@angieslist.com',
+          emailValue : 'anyemail@emailplace.com',
           passwordField : By.id('password'),
-          passwordValue : 'testtest123!',
+          passwordValue : 'some password',
           signInButton : By.id('sign-in-button'),
           newAccountButton : By.css('#sq-app-container > div.testing-accounts > div > h1 > button'),
           newAccountNameField : By.name('name'),
@@ -38,7 +38,7 @@ const chrome = require('chromedriver');
 
         // wait for the portal to load and then create a new account
         await driver.sleep(10000);
-        await driver.wait(until.urlIs('https://developer.squareup.com/apps'))
+        await driver.wait(until.urlIs('<removed again>'))
         await driver.wait(until.elementLocated(Elements.newAccountButton), 10000).click();
         await driver.sleep(2000);
         await driver.wait(until.elementLocated(Elements.newAccountNameField), 10000).sendKeys(Elements.newAccountNameValue);
